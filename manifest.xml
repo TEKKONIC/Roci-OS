@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PluginManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Name>Auto off Antenna plugin</Name>
+    <Guid>5AC3430D-33C5-4871-BC11-3FFC6091DF74</Guid>
+    <Version>v1.0.0</Version>
+</PluginManifest>
