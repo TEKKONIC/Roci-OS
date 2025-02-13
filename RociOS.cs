@@ -7,15 +7,16 @@ using VRage.Game.Components;
 using VRage.Game.Entity;
 using VRage.Game.ModAPI;
 using VRage.Game.ModAPI.Ingame;
+using VRage.Plugins;
 
 namespace RociOS
 {
     [MySessionComponentDescriptor(MyUpdateOrder.AfterSimulation)]
-    public class ClientPlugin : MySessionComponentBase
+    public class ClientPlugin : MySessionComponentBase, IPlugin
     {
         private bool _initialized;
 
-        public override void UpdateAfterSimulation()
+        public void Init(object gameInstance)
         {
             if (!_initialized)
             {
@@ -60,6 +61,16 @@ namespace RociOS
         private void DisableSuitAntenna(Sandbox.Game.Entities.Character.MyCharacter character)
         {
             character.EnableBroadcastingPlayerToggle(false);
+        }
+
+        public void Update()
+        {
+            // nothing to do here - we're using UpdateAfterSimulation
+        }
+
+        public void Dispose()
+        {
+            UnloadData();
         }
     }
 }
