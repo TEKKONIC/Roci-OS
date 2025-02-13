@@ -1,12 +1,11 @@
 # Roci-OS-Plugin
 
-Roci-OS-Plugin is a plugin for Roci OS developed by TEKKONIC. This plugin provides additional functionalities and enhancements for the Roci OS.
+Roci-OS is a plugin for Space Engineers developed by TEKKONIC. This plugin provides additional functionalities and enhancements for the Roci OS.
 
 ## Features
 
 - Disables suit antenna broadcasting for characters.
-- Listens for entity additions and removals in the game world.
-- Automatically initializes and unloads the plugin.
+- Additional features in development 
 
 ## Installation
 
