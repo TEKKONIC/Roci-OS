@@ -1,0 +1,5 @@
+C:\Users\jonathon\source\repos\Auto off Antenna plugin\Auto off Antenna plugin\obj\Debug\net8-windows\Auto off Antenna plugin.csproj.AssemblyReference.cache
+C:\Users\jonathon\source\repos\Auto off Antenna plugin\Auto off Antenna plugin\obj\Debug\net8-windows\Auto off Antenna plugin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jonathon\source\repos\Auto off Antenna plugin\Auto off Antenna plugin\obj\Debug\net8-windows\Auto off Antenna plugin.AssemblyInfoInputs.cache
+C:\Users\jonathon\source\repos\Auto off Antenna plugin\Auto off Antenna plugin\obj\Debug\net8-windows\Auto off Antenna plugin.AssemblyInfo.cs
+C:\Users\jonathon\source\repos\Auto off Antenna plugin\Auto off Antenna plugin\obj\Debug\net8-windows\Auto off Antenna plugin.csproj.CoreCompileInputs.cache

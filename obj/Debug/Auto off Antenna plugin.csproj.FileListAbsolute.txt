@@ -1,0 +1,2 @@
+C:\Users\jonathon\source\repos\Auto off Antenna plugin\obj\Debug\Auto off Antenna plugin.csproj.AssemblyReference.cache
+C:\Users\jonathon\source\repos\Auto off Antenna plugin\obj\Debug\Auto off Antenna plugin.csproj.CoreCompileInputs.cache
