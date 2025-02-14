@@ -18,11 +18,13 @@ Roci-OS is a plugin for Space Engineers developed by TEKKONIC. This plugin provi
 
 3. Build the project to generate the plugin DLL.
 
-4. Copy the generated DLL to the appropriate plugins folder for Roci OS.
+4. Copy the generated DLL to the appropriate plugins folder for space engineers pluginloader.
 
 ## Usage
 
-The plugin will automatically initialize when the game starts. It listens for entity additions and disables the suit antenna broadcasting for characters.
+The plugin will automatically initialize when the game starts. It disables the suit antenna broadcasting for characters.
+
+additional functionality in later updates
 
 ## Development
 
