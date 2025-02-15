@@ -275,3 +275,4 @@ C:\Users\jonat\Documents\GitHub\Roci-OS\build\Debug\VRage.EOS.dll
 C:\Users\jonat\Documents\GitHub\Roci-OS\build\Debug\VRage.Audio.dll
 C:\Users\jonat\Documents\GitHub\Roci-OS\build\Debug\VRage.Ansel.dll
 C:\Users\jonat\Documents\GitHub\Roci-OS\obj\Debug\RociOS.csproj.Up2Date
+C:\Users\jonathon\Documents\GitHub\Roci-OS\build\Debug\NLog.config
