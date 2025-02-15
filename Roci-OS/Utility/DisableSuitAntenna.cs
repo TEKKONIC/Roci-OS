@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Sandbox.Game.Entities.Character;
 using Sandbox.ModAPI;
 using VRage.Game.ModAPI;
+using VRage.GameServices;
 using NLog;
 
 namespace RociOS.Utility
@@ -15,7 +16,8 @@ namespace RociOS.Utility
         {
             Log.Info("Initializing DisableSuitAntenna...");
             MyAPIGateway.Session.OnSessionReady += OnSessionReady;
-            MyAPIGateway.Multiplayer.RegisterSecureMessageHandler(12345, OnPlayerRespawn);
+            MyAPIGateway.Session.OnSessionLoading += OnSessionLoading;
+            MyAPIGateway.Multiplayer.RegisterSecureMessageHandler(65244, OnPlayerRespawn);
             Log.Info("Event handlers registered.");
             isInitialized = true;
         }
@@ -26,10 +28,17 @@ namespace RociOS.Utility
             DisableAntenna();
         }
 
+        private static void OnSessionLoading()
+        {
+            Log.Info("Session is unloading. Reinitializing...");
+            Unload();
+            Initialize();
+        }
+
         private static void OnPlayerRespawn(ushort handlerId, byte[] message, ulong senderId, bool fromServer)
         {
-            Log.Info($"Player respawn detected. HandlerId: {handlerId}, SenderId: {senderId}, FromServer: {fromServer}");
-            DisableAntenna();
+           Log.Info($"Player respawn detected. HandlerId: {handlerId}, SenderId: {senderId}, FromServer: {fromServer}");
+           DisableAntenna();
         }
 
         public static void DisableAntenna()
@@ -58,7 +67,8 @@ namespace RociOS.Utility
 
         private static void DisableSuitAntennaForCharacter(MyCharacter character)
         {
-            character.EnableBroadcastingPlayerToggle(false);
+            //character.EnableBroadcastingPlayerToggle(true); disables the switch for broadbasting 
+            character.EnableBroadcasting(false);
             Log.Info("Disabled suit antenna for player: " + character.DisplayName);
         }
 
@@ -70,7 +80,8 @@ namespace RociOS.Utility
                 return;
             }
             MyAPIGateway.Session.OnSessionReady -= OnSessionReady;
-            MyAPIGateway.Multiplayer.UnregisterSecureMessageHandler(12345, OnPlayerRespawn);
+            MyAPIGateway.Session.OnSessionLoading -= OnSessionLoading;
+            MyAPIGateway.Multiplayer.UnregisterSecureMessageHandler(65244, OnPlayerRespawn);
             Log.Info("Event handlers unregistered.");
             isInitialized = false;
         }
