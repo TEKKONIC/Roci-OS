@@ -11,13 +11,14 @@ namespace RociOS.Utility
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static bool isInitialized = false;
+        private const ushort MessageId = 65244;
 
         public static void Initialize()
         {
             Log.Info("Initializing DisableSuitAntenna...");
             MyAPIGateway.Session.OnSessionReady += OnSessionReady;
             MyAPIGateway.Session.OnSessionLoading += OnSessionLoading;
-            MyAPIGateway.Multiplayer.RegisterSecureMessageHandler(65244, OnPlayerRespawn);
+            MyAPIGateway.Multiplayer.RegisterSecureMessageHandler(MessageId, OnPlayerRespawn);
             Log.Info("Event handlers registered.");
             isInitialized = true;
         }
@@ -37,8 +38,18 @@ namespace RociOS.Utility
 
         private static void OnPlayerRespawn(ushort handlerId, byte[] message, ulong senderId, bool fromServer)
         {
-           Log.Info($"Player respawn detected. HandlerId: {handlerId}, SenderId: {senderId}, FromServer: {fromServer}");
-           DisableAntenna();
+            Log.Info($"Player respawn detected. HandlerId: {handlerId}, SenderId: {senderId}, FromServer: {fromServer}");
+            if (MyAPIGateway.Multiplayer.IsServer)
+            {
+                Log.Info("Server detected. Disabling antenna and sending message to client...");
+                DisableAntenna();
+                MyAPIGateway.Multiplayer.SendMessageTo(MessageId, new byte[0], senderId);
+            }
+            else
+            {
+                Log.Info("Client detected. Disabling antenna...");
+                DisableAntenna();
+            }
         }
 
         public static void DisableAntenna()
@@ -67,7 +78,7 @@ namespace RociOS.Utility
 
         private static void DisableSuitAntennaForCharacter(MyCharacter character)
         {
-            //character.EnableBroadcastingPlayerToggle(true); disables the switch for broadbasting 
+            //character.EnableBroadcastingPlayerToggle(true); disables the switch for broadcasting
             character.EnableBroadcasting(false);
             Log.Info("Disabled suit antenna for player: " + character.DisplayName);
         }
@@ -77,11 +88,12 @@ namespace RociOS.Utility
             Log.Info("Unloading DisableSuitAntenna...");
             if (!isInitialized)
             {
+                Log.Warn("Already uninitialized. Exiting unload process.");
                 return;
             }
             MyAPIGateway.Session.OnSessionReady -= OnSessionReady;
             MyAPIGateway.Session.OnSessionLoading -= OnSessionLoading;
-            MyAPIGateway.Multiplayer.UnregisterSecureMessageHandler(65244, OnPlayerRespawn);
+            MyAPIGateway.Multiplayer.UnregisterSecureMessageHandler(MessageId, OnPlayerRespawn);
             Log.Info("Event handlers unregistered.");
             isInitialized = false;
         }
