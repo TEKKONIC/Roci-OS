@@ -4,7 +4,9 @@ Roci-OS is a plugin for Space Engineers developed by TEKKONIC. This plugin provi
 
 ## Features
 
-- Disables suit antenna broadcasting for characters.
+- Disables suit antenna broadcasting for characters
+- Enables auto faction chat
+- Configurable initialization delay
 - Additional features in development 
 
 ## Installation
@@ -52,4 +54,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Contact
 
-For any questions or inquiries, please contact TEKKONIC 
+For any questions or inquiries, please contact TEKKONIC

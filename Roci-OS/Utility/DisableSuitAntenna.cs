@@ -25,20 +25,20 @@ namespace RociOS.Utility
 
         private static void OnSessionReady()
         {
-            Log.Info("Session is ready. Disabling antenna...");
+            Log.Info("OnSessionReady event triggered. Disabling antenna...");
             DisableAntenna();
         }
 
         private static void OnSessionLoading()
         {
-            Log.Info("Session is unloading. Reinitializing...");
+            Log.Info("OnSessionLoading event triggered. Reinitializing...");
             Unload();
             Initialize();
         }
 
         private static void OnPlayerRespawn(ushort handlerId, byte[] message, ulong senderId, bool fromServer)
         {
-            Log.Info($"Player respawn detected. HandlerId: {handlerId}, SenderId: {senderId}, FromServer: {fromServer}");
+            Log.Info($"OnPlayerRespawn event triggered. HandlerId: {handlerId}, SenderId: {senderId}, FromServer: {fromServer}");
             if (MyAPIGateway.Multiplayer.IsServer)
             {
                 Log.Info("Server detected. Disabling antenna and sending message to client...");
@@ -81,6 +81,7 @@ namespace RociOS.Utility
             //character.EnableBroadcastingPlayerToggle(true); disables the switch for broadcasting
             character.EnableBroadcasting(false);
             Log.Info("Disabled suit antenna for player: " + character.DisplayName);
+            MyAPIGateway.Utilities.ShowNotification("Suit antenna disabled.", 5000, VRage.Game.MyFontEnum.White);
         }
 
         public static void Unload()

@@ -6,6 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{369E64E6-1DB9-4C2D-936B-FDFF847F405F}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <LangVersion>9.0</LangVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RociOS</RootNamespace>
     <AssemblyName>RociOS</AssemblyName>
@@ -32,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony, Version=2.3.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.3.5\lib\net48\0Harmony.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>TorchBinaries\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -162,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Roci-OS\Config\RociOSconfig.cs" />
+    <Compile Include="Roci-OS\Utility\AutoFactionChat.cs" />
     <Compile Include="Roci-OS\Utility\DisableSuitAntenna.cs" />
     <Compile Include="Roci-OS\RociOS.cs" />
     <Compile Include="Roci-OS\Properties\AssemblyInfo.cs" />
@@ -174,6 +180,8 @@
     <None Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
+    <None Include="packages.lock.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Manifest.xml" />

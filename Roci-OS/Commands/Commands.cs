@@ -15,7 +15,7 @@ namespace Roci_OS.Commands
     { 
      private static readonly Dictionary<ulong, DateTime> _updateCommandTimeout = new Dictionary<ulong, DateTime>();
      
-     [Command("!Rocios Beacon disable on/off", "Enable or disable the beacon disabler on your suit.")]
+     [Command("!RociOS Beacon disabler on/off", "Enable or disable the beacon disabler for your suit.")]
      [Permission(MyPromoteLevel.None)]
      public void 
 
