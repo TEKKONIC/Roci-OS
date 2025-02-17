@@ -1,4 +1,4 @@
-# Roci-OS-Plugin
+# Roci-OS - A Space Engineers Plugin 
 
 Roci-OS is a plugin for Space Engineers developed by TEKKONIC. This plugin provides additional functionalities and enhancements for the Roci OS.
 
