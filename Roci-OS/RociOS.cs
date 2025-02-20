@@ -63,6 +63,7 @@ namespace RociOS
 
         public void Init(object gameInstance)
         {
+            Log.Info("RociOS Plugin Online.");
             Log.Info("RociOS Init method called.");
             Task.Run(async () => await InitializeAsync());
 
@@ -101,7 +102,7 @@ namespace RociOS
                 Log.Error("MyAPIGateway.Utilities is null. Cannot show message.");
             }
 
-            if (MyAPIGateway.Multiplayer.IsServer)
+            if (MyAPIGateway.Multiplayer.MultiplayerActive)
             {
                 Log.Info("Multiplayer server detected. Initializing server-specific logic...");
                 DisableSuitAntenna.Initialize();
@@ -110,11 +111,6 @@ namespace RociOS
             {
                 Log.Info("Single-player detected. Initializing single-player specific logic...");
                 DisableSuitAntenna.Initialize();
-            }
-            else
-            {
-                Log.Info("Client detected. Initializing client-specific logic...");
-                // Initialize client-specific logic here
             }
             Log.Info("InitializeAsync method completed.");
         }
