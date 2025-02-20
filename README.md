@@ -1,12 +1,13 @@
-# Roci-OS> A Space Engineers Plugin 
+# Roci-OS: A Space Engineers Plugin 
 
-Roci-OS is a plugin for Space Engineers developed by TEKKONIC. This plugin provides additional functionalities and enhancements for the Roci OS.
+Roci-OS is a plugin for Space Engineers developed by TEKKONIC. This plugin provides additional functionalities and enhancements for Space Engineers (Sigma Draconis Servers).
 
 ## Features
 
 - Disables suit antenna broadcasting for characters
-- Enables auto faction chat
+- Enables auto faction chat (by Pas2704)
 - Configurable initialization delay
+- Grab single item functionality (by Pas2704)
 - Additional features in development 
 
 ## Installation
@@ -20,15 +21,15 @@ Roci-OS is a plugin for Space Engineers developed by TEKKONIC. This plugin provi
 
 3. Build the project to generate the plugin DLL.
 
-4. Copy the generated DLL to the appropriate plugins folder for space engineers pluginloader.
+4. Copy the generated DLL to the appropriate plugins folder for Space Engineers plugin loader.
 
 ## Usage
 
 The plugin will automatically initialize when the game starts. It disables the suit antenna broadcasting for characters.
 
-additional functionality in later updates
+Additional functionality in later updates.
 
-## Development
+## Development 
 
 ### Prerequisites
 
@@ -54,4 +55,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Contact
 
-For any questions or inquiries, please contact TEKKONIC
+For any questions or inquiries, please contact TEKKONIC.

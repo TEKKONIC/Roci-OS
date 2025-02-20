@@ -12,7 +12,8 @@ namespace RociOS.Config
 
         public bool EnableAutoFactionChat { get; set; } = true;
         public int InitializationDelay { get; set; } = 10000;
-        public bool DisableSuitBroadcasting { get; set; } = false;
+        public bool DisableSuitBroadcasting { get; set; } = true;
+        public bool GrabSingleItem { get; set; } = true;
 
         public static RociOSConfig Load()
         {

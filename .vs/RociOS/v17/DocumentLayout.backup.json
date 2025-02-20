@@ -1,7 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jonathon\\Documents\\GitHub\\Roci-OS\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{369E64E6-1DB9-4C2D-936B-FDFF847F405F}|RociOS.csproj|c:\\users\\jonat\\documents\\github\\roci-os\\roci-os\\rocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369E64E6-1DB9-4C2D-936B-FDFF847F405F}|RociOS.csproj|solutionrelative:roci-os\\rocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +14,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RociOS.cs",
+              "DocumentMoniker": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\Roci-OS\\RociOS.cs",
+              "RelativeDocumentMoniker": "Roci-OS\\RociOS.cs",
+              "ToolTip": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\Roci-OS\\RociOS.cs",
+              "RelativeToolTip": "Roci-OS\\RociOS.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:53:09.436Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"

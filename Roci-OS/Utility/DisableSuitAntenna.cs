@@ -15,6 +15,12 @@ namespace RociOS.Utility
 
         public static void Initialize()
         {
+            if (isInitialized)
+            {
+                Log.Warn("DisableSuitAntenna is already initialized.");
+                return;
+            }
+
             Log.Info("Initializing DisableSuitAntenna...");
             MyAPIGateway.Session.OnSessionReady += OnSessionReady;
             MyAPIGateway.Session.OnSessionLoading += OnSessionLoading;

@@ -1,11 +1,14 @@
 using System;
-using System.Threading.Tasks;
+using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using HarmonyLib;
 using NLog;
 using NLog.Config;
+using NLog.Targets;
 using Sandbox.ModAPI;
+using VRage.FileSystem;
 using VRage.Plugins;
 using RociOS.Utility;
 using RociOS.Config;
@@ -20,19 +23,59 @@ namespace RociOS
         [MethodImpl(MethodImplOptions.NoInlining)]
         public RociOS()
         {
-            LogManager.Configuration = new XmlLoggingConfiguration("NLog.config");
-            Log.Info("RociOS constructor called.");
-            config = RociOSConfig.Load();
+            try
+            {
+                // Configure NLog programmatically
+                var config = new LoggingConfiguration();
+
+                var consoleTarget = new ConsoleTarget("console")
+                {
+                    Layout = "${longdate} ${level:uppercase=true} ${message} ${exception:format=toString,StackTrace}"
+                };
+
+                //log file path
+                string logDirectory = MyFileSystem.UserDataPath;
+                string logFilePath = Path.Combine(logDirectory, "RociOS.log");
+
+                var fileTarget = new FileTarget("file")
+                {
+                    FileName = logFilePath,
+                    Layout = "${longdate} ${level:uppercase=true} ${message} ${exception:format=toString,StackTrace}"
+                };
+
+                config.AddTarget(consoleTarget);
+                config.AddTarget(fileTarget);
+
+                config.AddRule(LogLevel.Info, LogLevel.Fatal, consoleTarget);
+                config.AddRule(LogLevel.Debug, LogLevel.Fatal, fileTarget);
+
+                LogManager.Configuration = config;
+
+                Log.Info("RociOS constructor called.");
+                this.config = RociOSConfig.Load(); 
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to initialize RociOS plugin.");
+                throw;
+            }
         }
 
         public void Init(object gameInstance)
         {
             Log.Info("RociOS Init method called.");
             Task.Run(async () => await InitializeAsync());
+
             if (config.EnableAutoFactionChat)
             {
                 new Harmony("AutoFactionChat").PatchAll(Assembly.GetExecutingAssembly());
                 Log.Info("AutoFactionChat loaded");
+            }
+            if (config.GrabSingleItem)
+            {
+                Log.Debug("GrabSingleItem: Patching");
+                new Harmony("GrabSingleItem").PatchAll(Assembly.GetExecutingAssembly());
+                Log.Info("GrabSingleItem: Patches applied");
             }
         }
 
@@ -46,37 +89,52 @@ namespace RociOS
             }
 
             Log.Info("MyAPIGateway.Utilities and MyAPIGateway.Session are initialized.");
-            MyAPIGateway.Utilities.ShowMessage("RociOS", "Client-side plugin initialized.");
 
-            if (MyAPIGateway.Multiplayer.IsServer)
+            if (MyAPIGateway.Utilities != null)
             {
-                Log.Info("Server detected. Initializing server-Specific logic...");
-                // Initialize server-specific logic here 
+                Log.Info("MyAPIGateway.Utilities is not null. Attempting to show message.");
+                MyAPIGateway.Utilities.ShowMessage("RociOS", "Client-side plugin initialized.");
+                Log.Info("Message shown successfully.");
             }
             else
             {
-                Log.Info("Client detected. Initializing client-Specific logic...");
+                Log.Error("MyAPIGateway.Utilities is null. Cannot show message.");
+            }
+
+            if (MyAPIGateway.Multiplayer.IsServer)
+            {
+                Log.Info("Multiplayer server detected. Initializing server-specific logic...");
                 DisableSuitAntenna.Initialize();
+            }
+            else if (MyAPIGateway.Session.OnlineMode == VRage.Game.MyOnlineModeEnum.OFFLINE)
+            {
+                Log.Info("Single-player detected. Initializing single-player specific logic...");
+                DisableSuitAntenna.Initialize();
+            }
+            else
+            {
+                Log.Info("Client detected. Initializing client-specific logic...");
+                // Initialize client-specific logic here
             }
             Log.Info("InitializeAsync method completed.");
         }
 
         public void Update()
         {
-            Log.Info("Update method called.");
+            //Log.Info("Update method called.");
             // Implement any update logic here if needed
-            Log.Debug("Performing update logic...");
+            //Log.Debug("Performing update logic...");
             // Example placeholder logic
-            if (config.EnableAutoFactionChat)
-            {
-                Log.Debug("AutoFactionChat is enabled.");
+            //if (config.EnableAutoFactionChat)
+            //{
+                //Log.Debug("AutoFactionChat is enabled.");
                 // Add any update logic related to AutoFactionChat here
-            }
-            else
-            {
-                Log.Debug("AutoFactionChat is disabled.");
-            }
-            Log.Info("Update method completed.");
+            //}
+            //else
+            //{
+                //Log.Debug("AutoFactionChat is disabled.");
+            //}
+            //Log.Info("Update method completed.");
         }
 
         public void Dispose()

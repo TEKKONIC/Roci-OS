@@ -2,11 +2,11 @@
   "version": 1,
   "dependencies": {
     ".NETFramework,Version=v4.8": {
-      "Lib.Harmony": {
+      "Newtonsoft.Json": {
         "type": "Direct",
-        "requested": "[2.3.5, 2.3.5]",
-        "resolved": "2.3.5",
-        "contentHash": "LgVL1EhCYtY39YNp/h1PNraKdQn9Vwyb70bYIVLxz60zRgOTi11YohOjJwk4zXsIAoJLG57lO4aP6WXs2fv23A=="
+        "requested": "[13.0.1, )",
+        "resolved": "13.0.1",
+        "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
       }
     }
   }
