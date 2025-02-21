@@ -11,7 +11,7 @@ namespace RociOS.Config
         private const string ConfigFileName = "RociOSConfig.json";
 
         public bool EnableAutoFactionChat { get; set; } = true;
-        public int InitializationDelay { get; set; } = 15000;
+        public int InitializationDelay { get; set; } = 20000;
         public bool DisableSuitBroadcasting { get; set; } = true;
         public bool GrabSingleItem { get; set; } = true;
         public const int RetryDelayMilliseconds = 10000; 

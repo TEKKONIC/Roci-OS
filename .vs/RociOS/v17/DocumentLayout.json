@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{369E64E6-1DB9-4C2D-936B-FDFF847F405F}|RociOS.csproj|c:\\users\\jonat\\documents\\github\\roci-os\\roci-os\\rociosession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369E64E6-1DB9-4C2D-936B-FDFF847F405F}|RociOS.csproj|solutionrelative:roci-os\\rociosession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{369E64E6-1DB9-4C2D-936B-FDFF847F405F}|RociOS.csproj|c:\\users\\jonat\\documents\\github\\roci-os\\roci-os\\rocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{369E64E6-1DB9-4C2D-936B-FDFF847F405F}|RociOS.csproj|solutionrelative:roci-os\\rocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "RociOSession.cs",
+              "DocumentMoniker": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\Roci-OS\\RociOSession.cs",
+              "RelativeDocumentMoniker": "Roci-OS\\RociOSession.cs",
+              "ToolTip": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\Roci-OS\\RociOSession.cs",
+              "RelativeToolTip": "Roci-OS\\RociOSession.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T01:05:59.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "RociOS.cs",
               "DocumentMoniker": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\Roci-OS\\RociOS.cs",
               "RelativeDocumentMoniker": "Roci-OS\\RociOS.cs",
               "ToolTip": "C:\\Users\\jonat\\Documents\\GitHub\\Roci-OS\\Roci-OS\\RociOS.cs",
               "RelativeToolTip": "Roci-OS\\RociOS.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAADAAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwDUAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T22:53:09.436Z",
               "EditorCaption": ""

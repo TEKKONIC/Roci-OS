@@ -56,8 +56,6 @@ namespace RociOS.Utility
             Initialize();
         }
 
-        
-
         public static async Task DisableAntenna()
         {
             Log.Info("Attempting to disable antenna for the current player...");
@@ -78,7 +76,7 @@ namespace RociOS.Utility
                 if (character != null)
                 {
                     Log.Info($"Character found: {character.DisplayName}");
-                    DisableSuitAntennaForCharacter(character);
+                    await DisableSuitAntennaForCharacter(character);
                 }
                 else
                 {
@@ -91,17 +89,39 @@ namespace RociOS.Utility
             }
         }
 
-        private static void DisableSuitAntennaForCharacter(MyCharacter character)
+        private static async Task DisableSuitAntennaForCharacter(MyCharacter character)
         {
-            if (character.IsDead)
+            bool antennaDisabled = false;
+            MyCharacter previousCharacter = character;
+
+            while (true)
             {
-                Log.Warn("Character is dead. Skipping antenna disable.");
-                return;
+                if (character.IsDead)
+                {
+                    Log.Warn("Character is dead. Waiting to retry...");
+                    await Task.Delay(RociOSConfig.RetryDelayMilliseconds);
+                    antennaDisabled = false; 
+                    continue;
+                }
+
+                if (character != previousCharacter)
+                {
+                    Log.Info("Character has respawned. Re-disabling antenna...");
+                    previousCharacter = character;
+                    antennaDisabled = false; 
+                }
+
+                if (!antennaDisabled)
+                {
+                    character.EnableBroadcasting(false);
+                    character.RequestEnableBroadcasting(false);
+                    Log.Info("Disabled suit antenna for player: " + character.DisplayName);
+                    MyAPIGateway.Utilities.ShowNotification("Suit antenna disabled.", 15000, VRage.Game.MyFontEnum.White);
+                    antennaDisabled = true; 
+                }
+
+                await Task.Delay(RociOSConfig.RetryDelayMilliseconds);
             }
-            character.EnableBroadcasting(false);
-            character.RequestEnableBroadcasting(false);
-            Log.Info("Disabled suit antenna for player: " + character.DisplayName);
-            MyAPIGateway.Utilities.ShowNotification("Suit antenna disabled.", 25000, VRage.Game.MyFontEnum.White);
         }
 
         public static void Unload()
